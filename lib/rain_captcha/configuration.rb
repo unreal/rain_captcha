@@ -1,8 +1,8 @@
 module RainCaptcha
   module Configuration
-    attr_accessor :endpoint
+    attr_accessor :use_ssl
 
-    DEFAULT_ENDPOINT = 'http://raincaptcha.driversworld.us/captcha/'
+    RAINCAPTCHA_URL = 'raincaptcha.driversworld.us/captcha/'
 
     def self.extended(base)
       base.reset
@@ -12,8 +12,16 @@ module RainCaptcha
       yield self
     end
 
+    def protocol
+      self.use_ssl ? "https" : "http"
+    end
+
+    def endpoint
+      "#{self.protocol}://#{RAINCAPTCHA_URL}"
+    end
+
     def reset
-      self.endpoint = DEFAULT_ENDPOINT
+      self.use_ssl = false
     end
   end
 end

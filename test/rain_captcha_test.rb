@@ -29,4 +29,13 @@ class RainCaptchaTest < Test::Unit::TestCase
     assert !RainCaptcha.verify("foo","bar")
   end
 
+  def test_verify_unsuccesful
+    stub_request(:get, "http://raincaptcha.driversworld.us/captcha/test/?code=bar&key=foo").
+      to_return(:status => 500)
+
+    assert_raise Net::HTTPFatalError do
+      RainCaptcha.verify("foo","bar")
+    end
+  end
+
 end

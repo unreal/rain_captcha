@@ -10,16 +10,25 @@ class ConfigurationTest < Test::Unit::TestCase
     Foo.reset
   end
 
-  def test_default_endpoint
+  def test_protocol
+    assert_equal "http", Foo.protocol
+  end
+
+  def test_protocol_while_using_ssl
+    Foo.use_ssl = true
+    assert_equal "https", Foo.protocol
+  end
+
+  def test_endpoint
     assert_equal 'http://raincaptcha.driversworld.us/captcha/', Foo.endpoint
   end
 
-  def test_configure_via_block
+  def test_configure_user_ssl
     Foo.configure do |c|
-      c.endpoint = 'bar'
+      c.use_ssl = true
     end
 
-    assert_equal 'bar', Foo.endpoint
+    assert_equal 'https://raincaptcha.driversworld.us/captcha/', Foo.endpoint
   end
 
 end

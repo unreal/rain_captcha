@@ -26,7 +26,12 @@ module RainCaptcha
     end
 
     def verify(identifier, answer)
-      Net::HTTP.get(verify_uri(identifier, answer)) == "true"
+      response = Net::HTTP.get_response(verify_uri(identifier, answer))
+      if response.is_a? Net::HTTPSuccess
+        response.body == "true"
+      else
+        response.value
+      end
     end
   end
 end
