@@ -37,3 +37,8 @@ RainCaptcha.verify("unique_identifier", "incorrect_response")
 RainCaptcha.verify("unique_identifier", "correct_response")
 => Net::HTTPFatalError
 ```
+## Copyright
+Copyright (c) 2013 Jay Strybis.
+See [LICENSE][] for details.
+
+[license]: LICENSE.md
