@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.authors     = ['Jay Strybis']
   spec.email       = ['jay.strybis@gmail.com']
   spec.homepage    = 'https://github.com/unreal/rain_captcha'
-  spec.summary     = %q{Rails plugin for RainCaptcha service}
+  spec.summary     = %q{Simple Ruby wrapper for RainCaptcha service}
   spec.description = %q{Anti-spam protection for your website}
 
   spec.files = %w(LICENSE.md rain_captcha.gemspec Rakefile README.md)
